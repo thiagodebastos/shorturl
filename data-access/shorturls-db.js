@@ -5,28 +5,35 @@ const {
 
 function makeShortUrlsDb({ database }) {
   return Object.freeze({
+    findAll,
     findById,
     findByUrl,
     findByShortUrl,
     insert
   });
 
+  async function findAll() {
+    const db = database;
+    const result = await db("shorturls");
+    return result;
+  }
+
   async function findById({ id }) {
     const db = database;
-    const contact = await db("shorturls").where({ id });
-    return contact;
+    const result = await db("shorturls").where({ id });
+    return result;
   }
 
   async function findByShortUrl({ shorturl }) {
     const db = database;
-    const contact = await db("shorturls").where({ shorturl });
-    return contact;
+    const result = await db("shorturls").where({ shorturl });
+    return result;
   }
 
   async function findByUrl({ url }) {
     const db = database;
-    const contact = await db("shorturls").where({ url });
-    return contact;
+    const result = await db("shorturls").where({ url });
+    return result;
   }
 
   async function insert(shorturl) {

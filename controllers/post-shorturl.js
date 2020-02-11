@@ -8,7 +8,7 @@ function makePostShortUrl({ addShortUrl }) {
           "Content-Type": "application/json"
         },
         statusCode: 201,
-        body: { shortUrl }
+        body: shortUrl
       };
     } catch (error) {
       console.log(error);
