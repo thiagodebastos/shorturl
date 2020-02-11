@@ -2,13 +2,13 @@ function makeGetShortUrl({ resolveShortUrl }) {
   return async function getShortUrl(httpRequest) {
     try {
       const { shorturl } = httpRequest.params;
-      const shortUrl = await resolveShortUrl({ shorturl });
+      const resolvedShortUrl = await resolveShortUrl({ shorturl });
       return {
         headers: {
           "Content-Type": "application/json"
         },
         statusCode: 201,
-        body: { shortUrl }
+        body: { resolvedShortUrl }
       };
     } catch (error) {
       console.log(error);
