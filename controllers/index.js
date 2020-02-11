@@ -1,10 +1,13 @@
-const { resolveShortUrl } = require("../use-cases");
+const { resolveShortUrl, addShortUrl } = require("../use-cases");
 const makeGetShortUrl = require("./get-shorturls");
+const makePostShortUrl = require("./post-shorturl");
 
 const getShortUrl = makeGetShortUrl({ resolveShortUrl });
+const postShortUrl = makePostShortUrl({ addShortUrl });
 
 const shorturlController = Object.freeze({
-  getShortUrl
+  getShortUrl,
+  postShortUrl
 });
 
-module.exports = { shorturlController, getShortUrl };
+module.exports = { shorturlController, getShortUrl, postShortUrl };

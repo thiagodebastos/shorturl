@@ -1,6 +1,8 @@
 const shortUrlsDb = require("../data-access");
-const makeresolveShortUrl = require("./resolve-shorturl");
+const makeResolveShortUrl = require("./resolve-shorturl");
+const makeAddShortUrl = require("./create-shorturl");
 
-const resolveShortUrl = makeresolveShortUrl({ shortUrlsDb });
+const resolveShortUrl = makeResolveShortUrl({ shortUrlsDb });
+const addShortUrl = makeAddShortUrl({ shortUrlsDb });
 
-module.exports = { resolveShortUrl };
+module.exports = { resolveShortUrl, addShortUrl };

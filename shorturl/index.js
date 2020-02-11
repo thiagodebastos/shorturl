@@ -1,4 +1,5 @@
-const base62 = require("base62");
+// const base62 = require("base62");
+const base62 = require("../helpers/base62");
 const buildMakeShortUrl = require("./shorturl");
 
 let count = 0;
@@ -8,3 +9,5 @@ function counter() {
 }
 
 const makeShortUrl = buildMakeShortUrl({ counter, base62 });
+
+module.exports = { makeShortUrl };

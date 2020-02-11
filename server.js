@@ -8,7 +8,7 @@ const { config } = require("./config");
 
 const makeCallback = require("./express-callback");
 
-const { getShortUrl } = require("./controllers");
+const { getShortUrl, postShortUrl } = require("./controllers");
 
 const app = express();
 
@@ -32,6 +32,7 @@ app.get("/", function(req, res) {
 });
 
 app.get("/api/shorturl/:shorturl", makeCallback(getShortUrl));
+app.post("/api/shorturl/new", makeCallback(postShortUrl));
 
 app.listen(PORT, function() {
   console.log(`🚀 Express listening: http://localhost:${PORT} `);

@@ -1,29 +1,41 @@
-function base62(integer) {
-  const charset = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".split(
-    ""
-  );
-  function encode() {
-    if (integer === 0) {
-      return 0;
-    }
-    let s = [];
-    while (integer > 0) {
-      s = [base62.charset[integer % 62], ...s];
-      integer = Math.floor(integer / 62);
-    }
-    return s.join("");
+"use strict";
+
+var CHARSET = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".split(
+  ""
+);
+
+// NB: does not validate input
+exports.encode = function encode(int) {
+  if (int === 0) {
+    return CHARSET[0];
   }
-  function decode(chars) {
-    return chars
-      .split("")
-      .reverse()
-      .reduce(
-        (prev, curr, i) => prev + base62.charset.indexOf(curr) * 62 ** i,
-        0
-      );
+
+  var res = "";
+  while (int > 0) {
+    res = CHARSET[int % 62] + res;
+    int = Math.floor(int / 62);
   }
-  return {
-    encode,
-    decode
-  };
-}
+  return res;
+};
+
+exports.decode = function decode(str) {
+  var res = 0,
+    length = str.length,
+    i,
+    char;
+  for (i = 0; i < length; i++) {
+    char = str.charCodeAt(i);
+    if (char < 58) {
+      // 0-9
+      char = char - 48;
+    } else if (char < 91) {
+      // A-Z
+      char = char - 29;
+    } else {
+      // a-z
+      char = char - 87;
+    }
+    res += char * Math.pow(62, length - i - 1);
+  }
+  return res;
+};

@@ -24,7 +24,7 @@ function makeShortUrlsDb({ database }) {
     return contact;
   }
 
-  async function insert({ shorturl }) {
+  async function insert(shorturl) {
     const db = database;
     const id = await db("shorturls")
       .insert({ ...shorturl })
