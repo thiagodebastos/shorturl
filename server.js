@@ -22,9 +22,6 @@ app.use(cors({ origin: `http://localhost:3001` })); // TODO: set origin dependin
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-/** this project needs to parse POST bodies **/
-// you should mount the body-parser here
-
 app.use("/public", express.static(process.cwd() + "/public"));
 
 app.get("/", function(req, res) {
