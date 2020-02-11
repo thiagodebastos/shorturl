@@ -1,3 +1,8 @@
+const {
+  InvalidPropertyError,
+  UniqueConstraintError
+} = require("../helpers/errors");
+
 function makeShortUrlsDb({ database }) {
   return Object.freeze({
     findById,
@@ -33,13 +38,11 @@ function makeShortUrlsDb({ database }) {
       .catch(error => {
         // TODO: review knex-specific error-code
         if (error.code === "23505") {
-          // throw new UniqueConstraintError(error);
-          throw new Error(error);
+          throw new UniqueConstraintError(error);
         }
         // TODO: review knex-specific error-code
         if (error.code === "42703") {
-          // throw new InvalidPropertyError(error.message);
-          throw new Error(error.message);
+          throw new InvalidPropertyError(error.message);
         }
         return error;
       });
