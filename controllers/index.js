@@ -10,4 +10,8 @@ const shorturlController = Object.freeze({
   postShortUrl
 });
 
-module.exports = { shorturlController, getShortUrl, postShortUrl };
+module.exports = {
+  shorturlController,
+  getShortUrl,
+  postShortUrl
+};
