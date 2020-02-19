@@ -1,5 +1,5 @@
 const { config } = require("./config");
-const { databaseURL } = config;
+const { databaseURL, databaseURLProduction } = config;
 
 const knexConfig = Object.freeze({
   development: {
@@ -22,7 +22,7 @@ const knexConfig = Object.freeze({
 
   production: {
     client: "pg",
-    connection: databaseURL,
+    connection: databaseURLProduction,
     migrations: {
       directory: "./db/knex/data/migrations"
     },

@@ -27,7 +27,7 @@ function makeShortUrlsDb({ database }) {
   async function findByShortUrl({ shorturl }) {
     const db = database;
     const result = await db("shorturls").where({ shorturl });
-    return result;
+    return result[0];
   }
 
   async function findByUrl({ url }) {

@@ -1,4 +1,4 @@
-module.exports = function makeExpressCallback(controller) {
+module.exports = function makeExpressRedirect(controller) {
   return (req, res) => {
     const httpRequest = {
       body: req.body,
@@ -19,7 +19,7 @@ module.exports = function makeExpressCallback(controller) {
           res.set(httpResponse.headers);
         }
         res.type("json");
-        res.status(httpResponse.statusCode).send(httpResponse.body);
+        res.status(httpResponse.statusCode).redirect(httpResponse.body.url);
       })
       .catch(e => res.status(500).send({ error: "An unkown error occurred." }));
   };

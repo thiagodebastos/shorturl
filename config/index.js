@@ -12,7 +12,8 @@ if (!envFound) {
 const config = Object.freeze({
   port: parseInt(process.env.PORT, 10),
   databaseName: process.env.DATABASE_NAME,
-  databaseURL: process.env.DATABASE_URL
+  databaseURL: process.env.DATABASE_URL,
+  databaseURLProduction: process.env.DATABASE_URL_PRODUCTION
 });
 
 module.exports = { config };
